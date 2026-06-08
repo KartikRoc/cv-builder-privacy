@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — CV Builder Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --text: #1a1814;
+      --muted: #6b6659;
+      --accent: #1a5c8a;
+      --accent-light: #e8f1f8;
+      --accent-mid: #c2d8ea;
+      --border: #e2ddd5;
+      --success-bg: #edf7f0;
+      --success-text: #1a6635;
+      --tag-bg: #f0ece4;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .app-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 34px; height: 34px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+    .logo-name { font-family: var(--serif); font-size: 16px; color: var(--text); }
+    .topbar-meta { font-size: 12px; color: var(--muted); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 64px 24px 40px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--success-bg);
+      color: var(--success-text);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .hero-badge svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+    .hero-meta {
+      margin-top: 28px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; opacity: 0.7; }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR / TOC ── */
+    .toc {
+      position: sticky;
+      top: 72px;
+    }
+    .toc-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      padding-left: 12px;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li + li { margin-top: 2px; }
+    .toc-list a {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.18s;
+      line-height: 1.4;
+    }
+    .toc-list a:hover {
+      color: var(--accent);
+      background: var(--accent-light);
+      border-left-color: var(--accent);
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    .callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--accent);
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .callout strong { font-weight: 500; }
+
+    section { margin-bottom: 48px; scroll-margin-top: 90px; }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--muted);
+      min-width: 20px;
+      margin-top: 3px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    p { font-size: 15px; color: #3d3a34; line-height: 1.8; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 12px;
+    }
+    ul li, ol li {
+      font-size: 15px;
+      color: #3d3a34;
+      line-height: 1.75;
+      padding: 5px 0 5px 22px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    ul li:last-child, ol li:last-child { border-bottom: none; }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 14px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-mid);
+    }
+    ol { counter-reset: item; }
+    ol li { counter-increment: item; }
+    ol li::before {
+      content: counter(item);
+      position: absolute;
+      left: 0;
+      top: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      background: var(--tag-bg);
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    li strong { color: var(--text); font-weight: 500; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th {
+      background: var(--tag-bg);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 12px 14px;
+      color: #3d3a34;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #faf9f7; }
+
+    /* ── PERMISSIONS ── */
+    .perm-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .perm-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .perm-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .perm-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .perm-title { font-weight: 500; font-size: 14px; color: var(--text); }
+    .perm-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-top: 2px; }
+    .perm-opt { font-size: 11px; background: var(--tag-bg); color: var(--muted); padding: 2px 8px; border-radius: 100px; margin-left: 8px; }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; flex-shrink: 0; }
+    .contact-label { font-weight: 500; color: var(--text); min-width: 70px; font-size: 13px; }
+    .contact-val { color: var(--muted); }
+    .contact-val a { color: var(--accent); text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 780px; margin: 0 auto; }
+    .footer-logo { font-family: var(--serif); font-size: 18px; color: var(--text); margin-bottom: 8px; }
+    .footer-sub { font-size: 13px; color: var(--muted); }
+    .footer-links { margin-top: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .page-body { grid-template-columns: 1fr; gap: 0; }
+      .toc { display: none; }
+      .hero { padding: 36px 20px 28px; }
+      .page-body { padding: 0 20px 60px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero, .callout, section {
+      animation: fadeUp 0.5s ease both;
+    }
+    section:nth-child(1) { animation-delay: 0.05s; }
+    section:nth-child(2) { animation-delay: 0.10s; }
+    section:nth-child(3) { animation-delay: 0.15s; }
+    section:nth-child(4) { animation-delay: 0.20s; }
+    section:nth-child(5) { animation-delay: 0.25s; }
+    section:nth-child(6) { animation-delay: 0.30s; }
+    section:nth-child(7) { animation-delay: 0.35s; }
+    section:nth-child(8) { animation-delay: 0.40s; }
+    section:nth-child(9) { animation-delay: 0.45s; }
+    section:nth-child(10) { animation-delay: 0.50s; }
+    section:nth-child(11) { animation-delay: 0.55s; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar" aria-label="Site header">
+  <div class="topbar-inner">
+    <a class="app-logo" href="#">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <span class="logo-name">CV Builder Pro</span>
+    </a>
+    <span class="topbar-meta">Privacy Policy · v1.0</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Privacy Protected
+  </div>
+  <h1>Privacy Policy for<br><em>CV Builder Pro</em></h1>
+  <p class="hero-sub">We believe your CV data belongs to you — and only you. This page explains exactly how we handle your information.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Last updated: June 7, 2026
+    </div>
+    <div class="hero-meta-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Effective: June 7, 2026
+    </div>
+    <div class="hero-meta-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Applies to: Android App
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc" aria-label="Table of contents">
+      <p class="toc-label">On this page</p>
+      <ul class="toc-list">
+        <li><a href="#s1">Introduction</a></li>
+        <li><a href="#s2">Information we collect</a></li>
+        <li><a href="#s3">How we use data</a></li>
+        <li><a href="#s4">Data sharing</a></li>
+        <li><a href="#s5">Local storage</a></li>
+        <li><a href="#s6">Permissions</a></li>
+        <li><a href="#s7">Security</a></li>
+        <li><a href="#s8">Children's privacy</a></li>
+        <li><a href="#s9">Your rights</a></li>
+        <li><a href="#s10">Policy changes</a></li>
+        <li><a href="#s11">Contact us</a></li>
+      </ul>
+    </aside>
+
+    <!-- SECTIONS -->
+    <div class="content">
+
+      <div class="callout">
+        <strong>Key fact:</strong> CV Builder Pro stores all your resume data <strong>locally on your device only</strong>. We never upload, transmit, or store your personal CV content on any external server.
+      </div>
+
+      <section id="s1">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <h2>Introduction</h2>
+        </div>
+        <p>Welcome to <strong>CV Builder Pro</strong> ("the App"), developed and operated by <strong>Kartik Gupta</strong> ("we", "us", or "our"). This Privacy Policy describes how we collect, use, and protect information when you use our Android application available on the Google Play Store.</p>
+        <p>By downloading or using CV Builder Pro, you agree to the practices described in this policy. If you disagree with any part of this policy, please uninstall the App and discontinue use.</p>
+        <p>If you have questions, please contact us at the address provided in Section 11.</p>
+      </section>
+
+      <section id="s2">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <h2>Information we collect</h2>
+        </div>
+        <p>We collect two categories of information:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>What it includes</th>
+                <th>Where it is stored</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CV content data</strong></td>
+                <td>Full name, email, phone, address, job title, work history, education, skills, languages, certifications, projects, references, and profile photo — everything you enter into the CV form.</td>
+                <td>Locally on your device only. Never sent to our servers.</td>
+              </tr>
+              <tr>
+                <td><strong>Anonymised usage data</strong></td>
+                <td>App crashes, error logs, and anonymous usage statistics (e.g. which screens are visited, which features are used).</td>
+                <td>May be collected in anonymised form via Google's Firebase Crashlytics.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>We do <strong>not</strong> collect payment details, passwords, biometric data, precise GPS location, or any sensitive identifiers beyond what you voluntarily enter into your CV.</p>
+      </section>
+
+      <section id="s3">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <h2>How we use your information</h2>
+        </div>
+        <p>We use information solely for the following purposes:</p>
+        <ul>
+          <li><strong>CV creation:</strong> To allow you to build, edit, preview, and export your CV as a PDF or Word (.docx) document.</li>
+          <li><strong>Draft saving:</strong> To save your CV data locally so you can resume editing across app sessions.</li>
+          <li><strong>App improvement:</strong> To fix bugs and improve performance using anonymised crash reports from Firebase.</li>
+          <li><strong>Customer support:</strong> To respond to support inquiries you send to us directly via email.</li>
+        </ul>
+        <p>We do <strong>not</strong> use your data for advertising, user profiling, behavioural tracking, or any automated decision-making that affects you.</p>
+      </section>
+
+      <section id="s4">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <h2>Data sharing and third parties</h2>
+        </div>
+        <p>We do not sell, rent, or trade your personal data to any third party — ever. Limited data sharing occurs only in these specific circumstances:</p>
+        <ul>
+          <li><strong>Google / Firebase:</strong> Anonymised crash and diagnostic data may be shared with Google as part of standard Android infrastructure. This data cannot personally identify you. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details.</li>
+          <li><strong>File sharing (your action):</strong> When you share an exported PDF or Word file via Android's share sheet, the file is passed to the app you select (e.g. Gmail, WhatsApp). We have no control over how that third-party app handles the file.</li>
+          <li><strong>Legal obligations:</strong> We may disclose information if required to do so by law, regulation, or valid legal process, or to protect our legal rights and interests.</li>
+        </ul>
+      </section>
+
+      <section id="s5">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <h2>Local storage and exported files</h2>
+        </div>
+        <p>All CV data is stored using Android's DataStore and internal app storage — accessible only to the App on your device. Exported PDF and Word files are saved to your device's <code style="font-family: monospace; font-size: 13px; background: #f0ece4; padding: 2px 7px; border-radius: 4px;">Documents/</code> folder, accessible to you and any file-browsing app on your device.</p>
+        <p>We strongly recommend protecting your device with a secure screen lock to prevent unauthorised access to your CV data and exported files.</p>
+        <p>When you uninstall the App, all locally stored CV draft data is automatically removed. Exported files you have saved to your Documents folder will remain until you delete them manually.</p>
+      </section>
+
+      <section id="s6">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <h2>Permissions we request</h2>
+        </div>
+        <div class="perm-grid">
+          <div class="perm-card">
+            <div class="perm-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div>
+              <div class="perm-title">Read media images <span class="perm-opt">Optional</span></div>
+              <div class="perm-desc">Allows you to select a profile photo from your gallery to include in your CV. If denied, the App functions normally without a profile photo.</div>
+            </div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <div>
+              <div class="perm-title">Camera <span class="perm-opt">Optional</span></div>
+              <div class="perm-desc">Allows you to take a photo directly to use as your CV profile picture. If denied, you can still select a photo from your gallery instead.</div>
+            </div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div>
+              <div class="perm-title">Write external storage <span class="perm-opt">Android 9 and below only</span></div>
+              <div class="perm-desc">Required on older Android versions to save exported PDF and Word files to your Documents folder. Not requested on Android 10 and above.</div>
+            </div>
+          </div>
+        </div>
+        <p>All permissions are optional. You may deny any permission and continue using the core CV-building features of the App.</p>
+      </section>
+
+      <section id="s7">
+        <div class="section-header">
+          <span class="section-num">07</span>
+          <h2>Data security</h2>
+        </div>
+        <p>We take reasonable technical and organisational measures to protect your information:</p>
+        <ul>
+          <li>Your CV content never leaves your device through our App</li>
+          <li>Exported files are saved only to your device's local storage</li>
+          <li>We use Android's built-in security mechanisms (DataStore, FileProvider with scoped access) for all data handling</li>
+          <li>The App does not require an account, login credentials, or an internet connection to function</li>
+          <li>No advertising SDKs or tracking libraries are included in the App</li>
+        </ul>
+        <p>No method of electronic storage is 100% secure. We encourage you to keep your device software up to date and use a strong screen lock.</p>
+      </section>
+
+      <section id="s8">
+        <div class="section-header">
+          <span class="section-num">08</span>
+          <h2>Children's privacy</h2>
+        </div>
+        <p>CV Builder Pro is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. The App is intended for individuals seeking employment or professional opportunities who are of working age.</p>
+        <p>If you are a parent or guardian and believe your child has used the App to submit personal information, please contact us at the address in Section 11. We will take prompt steps to remove any such information.</p>
+      </section>
+
+      <section id="s9">
+        <div class="section-header">
+          <span class="section-num">09</span>
+          <h2>Your rights</h2>
+        </div>
+        <p>Since your data is stored only on your own device, you have full and immediate control at all times:</p>
+        <ul>
+          <li><strong>Access:</strong> All your CV data is visible and accessible within the App at any time.</li>
+          <li><strong>Edit:</strong> You can update, correct, or modify any field in your CV at any time.</li>
+          <li><strong>Delete:</strong> Use the "Delete CV" option within the App, or uninstall the App entirely to remove all stored data from your device.</li>
+          <li><strong>Export / Portability:</strong> Export your CV as a standard PDF or .docx file at any time, compatible with any device or platform.</li>
+          <li><strong>Withdraw consent:</strong> You may revoke any App permissions at any time via your device's Settings → Apps → CV Builder Pro → Permissions.</li>
+        </ul>
+        <p>For any data handled by Google's services (e.g. crash reports), you may review and manage your settings at <a href="https://myaccount.google.com/privacy" target="_blank" rel="noopener">myaccount.google.com/privacy</a>.</p>
+      </section>
+
+      <section id="s10">
+        <div class="section-header">
+          <span class="section-num">10</span>
+          <h2>Changes to this policy</h2>
+        </div>
+        <p>We may update this Privacy Policy from time to time to reflect changes in the App, legal requirements, or our practices. When we make material changes, we will:</p>
+        <ul>
+          <li>Update the "Last updated" date at the top of this page</li>
+          <li>Notify you via an in-app notification or through the Google Play Store listing</li>
+          <li>For significant changes, request renewed consent where required by law</li>
+        </ul>
+        <p>Your continued use of the App after any changes to this policy constitutes your acceptance of the updated terms. We encourage you to review this page periodically.</p>
+      </section>
+
+      <section id="s11">
+        <div class="section-header">
+          <span class="section-num">11</span>
+          <h2>Contact us</h2>
+        </div>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please reach out:</p>
+        <div class="contact-card">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="contact-label">Developer</span>
+            <span class="contact-val">Kartik Gupta</span>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="contact-label">Email</span>
+            <span class="contact-val"><a href="mailto:kartikgupta618@gmail.com">kartikgupta618@gmail.com</a></span>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="contact-label">Location</span>
+            <span class="contact-val">India</span>
+          </div>
+
+        </div>
+        <p style="margin-top: 16px; font-size: 14px; color: #6b6659;">We aim to respond to all privacy-related inquiries within 7 business days.</p>
+      </section>
+
+    </div><!-- end .content -->
+  </div><!-- end .page-body -->
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CV Builder Pro</div>
+    <div class="footer-sub">© 2026 Kartik Gupta. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="mailto:kartikgupta618@gmail.com">Contact</a>
+      <a href="https://play.google.com/store" target="_blank" rel="noopener">Google Play</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
